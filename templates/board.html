@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Boggle{% endblock %}
+{% block header %}
+<h2>Score: <span id="score"></span></h2>
+<p>Games played: <span id="games">{{session['games']}}</span></p>
+<p>High score: <span id="hscore">{{session['hscore']}}</span></p>
+<p>Time left: <span id="timer">0</span></p>
+{% endblock %}
+
+
+{% block content %}
+    <div id='board'>
+        <table>
+            {% for row in session["board_logical"] %}
+                <tr>
+                    {% for cell in row: %}
+                        <td>{{cell}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            
+        </table>
+    </div>
+
+    <div>
+            <label for="input">Word: </label>
+            <input type="text" id="input" name="input" required>
+            <button id="submit">Submit</button>
+    </div>
+
+    <div id="messages"></div>
+
+
+{% endblock %}
